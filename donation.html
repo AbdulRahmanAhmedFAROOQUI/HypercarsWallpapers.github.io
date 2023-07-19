@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Donation for my Website</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<style>
+	   body {
+        background-image:url('background-ARAF.jpeg');
+        background-position: center;
+        margin: 0;
+        color: rgb(255, 255, 255);
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #000000;
+        height: 50px;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        padding: 15px 40px;
+        text-decoration: none;
+      }
+
+      li a:hover {
+        background-color:rgb(0, 0, 0);
+      }
+      h1, .header {
+        color: white;
+      }
+      h3, .header {
+        color: white;
+      }
+      p {
+        color: white;
+      }
+
+      /* Add styles for logo */
+      .logo {
+        display: inline-block;
+        margin-left: 0px;
+        margin-top: 0px;
+      }
+
+      /* Adjust logo size */
+      .logo img {
+        width: 30px;
+        height: 20px;
+      }
+
+      /* Set margin and padding to 0 for home, about, and donation blocks */
+      #home, #about, #donation {
+        background-image: url ("C:\Users\Dell M\Desktop\Car\background\background-ARAF.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Add border to clickable images */
+      a:not(.logo img) img {
+        border: 4px solid white;
+      }
+	  h4 .header {
+        color: white;
+      }
+    
+	</style>
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar">
+	  <a class="navbar-brand" href="index.html">Hypercars walpapers</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item">
+	        <a class="nav-link" href="index.html">Home</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="about.html">About</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="donation.html">Donate</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+
+	<!-- Page Content -->
+	<div class="container my-5">
+		<h1 class="text-center">Donation for our Website</h1>
+		<h4><p class="text-center">Your support helps us continue to create great content!</p></h4>
+		
+		<div class="row my-5">
+			<div class="col-md-6 text-center">
+				<h4>Pay with Google Pay and Pay pal</h4>
+				<!-- Replace with your own Google Pay button code -->
+				
+				<form action="/charge" method="post" id="payment-form">
+				  <div id="google-pay-button"></div>
+				</form>
+				<script src="https://pay.google.com/gp/p/js/pay.js" onload="onGooglePayLoaded()"></script>
+				<script>
+				  function onGooglePayLoaded() {
+				    const paymentsClient = new google.payments.api.PaymentsClient({
+				      environment: 'TEST'
+				    });
+				    const paymentDataRequest = {
+				      merchantInfo: {
+				        merchantId: 'YOUR_MERCHANT_ID_HERE',
+				        merchantName: 'My Website'
+				      },
+				      allowedPaymentMethods: ['CARD', 'TOKENIZED_CARD'],
+				      tokenizationSpecification: {
+				        type: 'PAYMENT_GATEWAY',
+				        parameters: {
+				          gateway: 'example',
+				          gatewayMerchantId: 'exampleGatewayMerchantId'
+				        }
+				      },
+				      transactionInfo: {
+				        totalPriceStatus: 'FINAL',
+				        totalPriceLabel: 'Total',
+				        totalPrice: '10.00',
+				        currencyCode: 'USD'
+				      }
+				    };
+				    const button = paymentsClient.createButton({
+				      onClick: function() {
+				        paymentsClient.loadPaymentData
+				        (paymentDataRequest)
+					  }
+					
+					}
